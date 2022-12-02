@@ -1,16 +1,19 @@
-import React from 'react'
-import styled from '@emotion/styled';
-import tw from 'twin.macro'
+import React from "react";
+import styled from "@emotion/styled";
+import tw from "twin.macro";
+import Product from "../elements/Product";
 
 const Shop = () => {
   return (
-    <Test>Shop</Test>
+    <Container>
+        <h1 className="text-2xl font-bold mb-10">ShopCenter.</h1>
+        <Product />
+    </Container>
   )
-}
+};
 
-export default Shop
+export default Shop;
 
-const Test = styled.div`
-    ${tw`border border-[#000]`};
-    color:pink;
-`
+const Container = styled.div`
+  ${tw`container mx-auto p-5`};
+`;
