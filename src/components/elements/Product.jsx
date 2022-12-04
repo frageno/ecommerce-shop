@@ -109,5 +109,5 @@ const ProductCard = styled.div`
 `;
 
 const Wrapper = styled.div`
-    ${tw`flex items-center`}
+    ${tw`flex items-center my-10`}
 `
