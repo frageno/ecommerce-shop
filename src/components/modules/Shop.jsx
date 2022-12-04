@@ -4,13 +4,13 @@ import tw from "twin.macro";
 import Product from "../elements/Product";
 import Navbar from "./Navbar";
 
-const Shop = () => {
+const Shop = ({ products }) => {
   return (
     <Container>
-        <Navbar />
-        <Product />
+      <Navbar />
+      <Product products={products} />
     </Container>
-  )
+  );
 };
 
 export default Shop;

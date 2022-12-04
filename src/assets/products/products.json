@@ -1,0 +1,42 @@
+[
+    {
+      "_id": "613085c66064674c5c47c7ab",
+      "index": 0,
+      "name": "Glossy Gray 19' Aluminium Wheel AR-19",
+      "imageURL": "images/product-4-1.jpg",
+      "date": "2021-09-01 09:36",
+      "category": "Aluminium Wheel",
+      "price": 300,
+      "description": "Ad magna laborum proident irure sit velit sint non ex minim fugiat. Ea deserunt Lorem ullamco pariatur cupidatat magna elit Lorem nostrud pariatur dolore anim est. Mollit aliquip ea et exercitation commodo adipisicing.\r\n"
+    },
+    {
+      "_id": "613085c657f552cdfa4a903b",
+      "index": 1,
+      "name": "Left Headlight Of Brandix Z54",
+      "imageURL": "images/product-3.jpg",
+      "date": "2021-09-02 02:30",
+      "category": "Headlight",
+      "price": 200,
+      "description": "Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
+    },
+    {
+      "_id": "613085c657f552cdfa4a903b",
+      "index": 3,
+      "name": "Brandix Spark Plug Kit ASR-400",
+      "imageURL": "images/product-1.jpg",
+      "date": "2021-09-02 02:30",
+      "category": "Plug Kit",
+      "price": 19,
+      "description": "Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
+    },
+    {
+      "_id": "613085c657f552cdfa4a903b",
+      "index": 4,
+      "name": "Brandix Brake Kit BDX-750Z370-S",
+      "imageURL": "images/product-2.jpg",
+      "date": "2021-09-02 02:30",
+      "category": "Brake Kit",
+      "price": 250,
+      "description": "Excepteur amet consectetur dolor dolore nostrud dolor tempor voluptate ut id. Ex occaecat cupidatat consequat mollit ut. Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
+    }
+]
