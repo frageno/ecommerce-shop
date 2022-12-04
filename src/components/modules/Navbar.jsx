@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <NavbarBox>
       <a href="/" className="text-2xl font-bold">
-        Shop<span className="text-primary">Parts.</span>
+        Car<span className="text-primary">Parts.</span>
       </a>
       <div className="cart-box relative">
         <button
