@@ -8,9 +8,10 @@ const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
 
   const cartClickHandler = (item) => {
-    setItem(item._id);
+    setItem((prevItems) => {
+      return [item, ...prevItems];
+    });
   };
-  console.log(item);
   return (
     <Container>
       <Navbar products={products} item={item} />

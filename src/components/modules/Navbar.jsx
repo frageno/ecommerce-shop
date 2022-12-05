@@ -25,7 +25,7 @@ const Navbar = ({item, products}) => {
           }}
         >
           <IoMdCart size={32} />
-          <Counter>0</Counter>
+          <Counter>{item.length}</Counter>
         </button>
         <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} products={products} />
       </div>
