@@ -15,7 +15,7 @@ const Navbar = ({item, subtotal, removeItemHandler}) => {
 
   return (
     <NavbarBox>
-      <a href="/" className="text-2xl font-bold">
+      <a href="/" className="text-2xl font-bold uppercase">
         Car<span className="text-primary">Parts.</span>
       </a>
       <div className="cart-box relative">
@@ -27,7 +27,7 @@ const Navbar = ({item, subtotal, removeItemHandler}) => {
           <IoMdCart size={32} />
           <Counter>{item.length}</Counter>
         </button>
-        <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} subtotal={subtotal} removeItemHandler={removeItemHandler}/>
+        <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} subtotal={subtotal} removeItemHandler={removeItemHandler} />
       </div>
     </NavbarBox>
   );

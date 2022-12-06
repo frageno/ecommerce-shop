@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoIosCloseCircle, IoIosClose } from "react-icons/io";
 
-const Cart = ({ active, cartClickHandler, item, subtotal, removeItemHandler }) => {
-
+const Cart = ({
+  active,
+  cartClickHandler,
+  item,
+  subtotal,
+  removeItemHandler,
+}) => {
   const shippingPrice = 25;
   const tax = 4.6;
   const total = shippingPrice + tax + subtotal;
-  
+
   const closeClickHandler = () => {
-    cartClickHandler(false)
+    cartClickHandler(false);
   };
+
+  console.log('CART', item.length);
+  if(item.length >= 0){
+    console.log('test')
+  }
   // const product = products.find((product) => product._id === item);
 
   return (
@@ -24,7 +34,7 @@ const Cart = ({ active, cartClickHandler, item, subtotal, removeItemHandler }) =
           </button>
         </div>
         <div className="cart__items block">
-          {item.map((product,index) => (
+          {item.map((product, index) => (
             <CartItemWrap key={index}>
               <div className="image w-1/3">
                 <a href="/">
@@ -33,11 +43,16 @@ const Cart = ({ active, cartClickHandler, item, subtotal, removeItemHandler }) =
               </div>
               <div className="cart__content w-2/3">
                 <h4 className="text-sm mb-1">{product.name}</h4>
-                <span className="text-xs bg-primary py-[2px] px-2 text-white rounded-[5px]">${product.price}</span>
-
+                <span className="text-xs bg-primary py-[2px] px-2 text-white rounded-[5px]">
+                  ${product.price}
+                </span>
               </div>
               <button className="transition-all duration-300 hover:bg-border rounded-full">
-                <IoIosClose size={22} className="transition-all duration-300 text-gray hover:text-primary" onClick={() => removeItemHandler(product._id)}/>
+                <IoIosClose
+                  size={22}
+                  className="transition-all duration-300 text-gray hover:text-primary"
+                  onClick={() => removeItemHandler(product._id)}
+                />
               </button>
             </CartItemWrap>
           ))}
@@ -64,7 +79,6 @@ const Cart = ({ active, cartClickHandler, item, subtotal, removeItemHandler }) =
             <button>Checkout</button>
           </div>
         </div>
-
       </div>
     </CartBox>
   );
@@ -78,8 +92,8 @@ const CartBox = styled.div`
 
 const CartItemWrap = styled.div`
   ${tw`py-4 border-b border-border flex items-start gap-x-2 relative`}
-`
+`;
 
 const CartTotalsWrap = styled.div`
   ${tw`w-full flex justify-between pb-1`}
-`
+`;

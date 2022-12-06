@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
   const [subtotal, setSubTotal] = useState(0);
+  // const [empty, setEmpty] = useState(false);
 
   const cartClickHandler = (item) => {
     // Adding item to cart
@@ -17,11 +18,21 @@ const Shop = ({ products }) => {
     setSubTotal((prevPrice) => {
       return (prevPrice += item.price);
     });
+    // setEmpty(true);
+    // console.log(empty);
+
   };
 
-  // Remove items in cart
+  // Remove items in cart and update subtotal by decreasing price
   const removeItemHandler = (id) => {
+    const singleProduct = item.find((item) => item._id === id);
     setItem(item.filter((item) => item._id !== id));
+    setSubTotal(subtotal - singleProduct.price);
+
+    // if(!item.length <= 0){
+    //   setEmpty(false);
+    //   console.log(empty)
+    // }
   };
   return (
     <Container>
