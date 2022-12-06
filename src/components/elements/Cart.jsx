@@ -1,12 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoIosCloseCircle, IoIosClose } from "react-icons/io";
 
-const Cart = ({ active, cartClickHandler, item }) => {
+const Cart = ({ active, cartClickHandler, item, subtotal, removeItemHandler }) => {
 
-  // const [total, setTotal] = useState(0);
-
+  const shippingPrice = 25;
+  const tax = 4.6;
+  const total = shippingPrice + tax + subtotal;
+  
   const closeClickHandler = () => {
     cartClickHandler(false)
   };
@@ -14,7 +16,7 @@ const Cart = ({ active, cartClickHandler, item }) => {
 
   return (
     <CartBox className={active ? "translate-x-0" : "translate-x-[300px]"}>
-      <div className="flex items-center flex-col justify-between p-5">
+      <div className="flex flex-col justify-between p-5">
         <div className="cart__header flex justify-between mb-4 w-full">
           <h2 className="text-2xl font-bold">Your cart</h2>
           <button onClick={closeClickHandler}>
@@ -35,16 +37,34 @@ const Cart = ({ active, cartClickHandler, item }) => {
 
               </div>
               <button className="transition-all duration-300 hover:bg-border rounded-full">
-                <IoIosClose size={22} className="transition-all duration-300 text-gray hover:text-primary" />
+                <IoIosClose size={22} className="transition-all duration-300 text-gray hover:text-primary" onClick={() => removeItemHandler(product._id)}/>
               </button>
             </CartItemWrap>
           ))}
+          <div className="py-5">
+            <CartTotalsWrap>
+              <p className="w-1/2 font-medium">Subtotal</p>
+              <span className="w-1/1 text-right">${subtotal}</span>
+            </CartTotalsWrap>
+            <CartTotalsWrap>
+              <p className="w-1/2 font-medium">Shipping</p>
+              <span className="w-1/1 text-right">${shippingPrice}</span>
+            </CartTotalsWrap>
+            <CartTotalsWrap>
+              <p className="w-1/2 font-medium">Tax</p>
+              <span className="w-1/1 text-right">${tax}</span>
+            </CartTotalsWrap>
+            <CartTotalsWrap>
+              <p className="w-1/2 font-medium">Total</p>
+              <span className="w-1/1 text-right">${total}</span>
+            </CartTotalsWrap>
+          </div>
+          <div className="w-full buttons flex justify-around items-center">
+            <button>View cart</button>
+            <button>Checkout</button>
+          </div>
         </div>
-        <div className="w-full buttons flex justify-around items-center">
-          <button>View cart</button>
-          <button>Checkout</button>
 
-        </div>
       </div>
     </CartBox>
   );
@@ -58,4 +78,8 @@ const CartBox = styled.div`
 
 const CartItemWrap = styled.div`
   ${tw`py-4 border-b border-border flex items-start gap-x-2 relative`}
+`
+
+const CartTotalsWrap = styled.div`
+  ${tw`w-full flex justify-between pb-1`}
 `

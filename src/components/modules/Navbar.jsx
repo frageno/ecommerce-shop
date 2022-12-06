@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { IoMdCart } from "react-icons/io";
 import Cart from "../elements/Cart";
 
-const Navbar = ({item, products}) => {
+const Navbar = ({item, subtotal, removeItemHandler}) => {
   // State for active cart items
   const [isActive, setIsActive] = useState(false);
 
@@ -27,7 +27,7 @@ const Navbar = ({item, products}) => {
           <IoMdCart size={32} />
           <Counter>{item.length}</Counter>
         </button>
-        <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} products={products} />
+        <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} subtotal={subtotal} removeItemHandler={removeItemHandler}/>
       </div>
     </NavbarBox>
   );
