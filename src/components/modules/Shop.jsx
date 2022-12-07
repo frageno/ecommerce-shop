@@ -3,11 +3,12 @@ import styled from "@emotion/styled";
 import tw from "twin.macro";
 import Product from "../elements/Product";
 import Navbar from "./Navbar";
+import Alert from "../elements/Alert";
 
 const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
   const [subtotal, setSubTotal] = useState(0);
-  // const [empty, setEmpty] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const cartClickHandler = (item) => {
     // Adding item to cart
@@ -18,21 +19,23 @@ const Shop = ({ products }) => {
     setSubTotal((prevPrice) => {
       return (prevPrice += item.price);
     });
-    // setEmpty(true);
-    // console.log(empty);
-
+    // Showing alert
+    setAlert(true);
   };
+  // Close alert after add item
+  const closeAlertClickHandler = () => {
+    setAlert(false);
+  };
+
+  setTimeout(() => {
+    closeAlertClickHandler()
+  },3000)
 
   // Remove items in cart and update subtotal by decreasing price
   const removeItemHandler = (id) => {
     const singleProduct = item.find((item) => item._id === id);
     setItem(item.filter((item) => item._id !== id));
     setSubTotal(subtotal - singleProduct.price);
-
-    // if(!item.length <= 0){
-    //   setEmpty(false);
-    //   console.log(empty)
-    // }
   };
   return (
     <Container>
@@ -42,7 +45,9 @@ const Shop = ({ products }) => {
         subtotal={subtotal}
         removeItemHandler={removeItemHandler}
       />
+      <h2 className="text-4xl text-center font-bold pt-10">Shop</h2>
       <Product products={products} cartClickHandler={cartClickHandler} />
+      <Alert alert={alert} closeAlertClickHandler={closeAlertClickHandler} item={item}/>
     </Container>
   );
 };

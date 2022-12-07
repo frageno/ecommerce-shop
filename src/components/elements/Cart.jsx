@@ -18,10 +18,10 @@ const Cart = ({
     cartClickHandler(false);
   };
 
-  console.log('CART', item.length);
-  if(item.length >= 0){
-    console.log('test')
-  }
+  // console.log('CART', item.length);
+  // if(item.length >= 0){
+  //   console.log('test')
+  // }
   // const product = products.find((product) => product._id === item);
 
   return (
@@ -56,28 +56,32 @@ const Cart = ({
               </button>
             </CartItemWrap>
           ))}
-          <div className="py-5">
-            <CartTotalsWrap>
-              <p className="w-1/2 font-medium">Subtotal</p>
-              <span className="w-1/1 text-right">${subtotal}</span>
-            </CartTotalsWrap>
-            <CartTotalsWrap>
-              <p className="w-1/2 font-medium">Shipping</p>
-              <span className="w-1/1 text-right">${shippingPrice}</span>
-            </CartTotalsWrap>
-            <CartTotalsWrap>
-              <p className="w-1/2 font-medium">Tax</p>
-              <span className="w-1/1 text-right">${tax}</span>
-            </CartTotalsWrap>
-            <CartTotalsWrap>
-              <p className="w-1/2 font-medium">Total</p>
-              <span className="w-1/1 text-right">${total}</span>
-            </CartTotalsWrap>
-          </div>
-          <div className="w-full buttons flex justify-around items-center">
-            <button>View cart</button>
-            <button>Checkout</button>
-          </div>
+          { item.length >= 1 ?
+            <>
+              <div className="py-5">
+                <CartTotalsWrap>
+                  <p className="w-1/2 font-medium">Subtotal</p>
+                  <span className="w-1/1 text-right">${subtotal}</span>
+                </CartTotalsWrap>
+                <CartTotalsWrap>
+                  <p className="w-1/2 font-medium">Shipping</p>
+                  <span className="w-1/1 text-right">${shippingPrice}</span>
+                </CartTotalsWrap>
+                <CartTotalsWrap>
+                  <p className="w-1/2 font-medium">Tax</p>
+                  <span className="w-1/1 text-right">${tax}</span>
+                </CartTotalsWrap>
+                <CartTotalsWrap>
+                  <p className="w-1/2 font-medium">Total</p>
+                  <span className="w-1/1 text-right">${total}</span>
+                </CartTotalsWrap>
+              </div>
+              <div className="w-full buttons flex justify-around items-center">
+                <button>View cart</button>
+                <button>Checkout</button>
+              </div>
+            </>
+            : <p>Your cart is empty</p>}
         </div>
       </div>
     </CartBox>

@@ -36,7 +36,7 @@ const Navbar = ({item, subtotal, removeItemHandler}) => {
 export default Navbar;
 
 const NavbarBox = styled.div`
-  ${tw`flex justify-between items-center`}
+  ${tw`flex justify-between items-center border-b border-[#f2f2f2] pb-5`}
 `;
 
 const Counter = styled.span`
