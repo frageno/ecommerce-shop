@@ -39,6 +39,11 @@ const Product = ({ products, cartClickHandler }) => {
               </Button>
             </div>
           </div>
+          <div className="quick absolute top-10 right-2 text-gray opacity-0 z-index-[-1] translate-x-[100%] transition-all duration-150">
+            <IoMdCart size={20} className="mb-3"/>
+            <IoMdCart size={20} className="mb-3"/>
+            <IoMdCart size={20} />
+          </div>
         </ProductCard>
       ))}
     </Wrapper>
@@ -52,7 +57,7 @@ const Wrapper = styled.div`
 `;
 
 const ProductCard = styled.div`
-  ${tw`shadow-lg w-[19%] p-5 rounded transition-all hover:shadow-xl my-3`}
+  ${tw`shadow-lg w-[19%] p-5 relative rounded transition-all hover:shadow-xl my-3`}
   transition: color .2s;
   :hover {
     button {
@@ -60,6 +65,9 @@ const ProductCard = styled.div`
     }
     button:before {
       ${tw`bg-primary scale-100`}
+    }
+    .quick {
+      ${tw`opacity-100 translate-x-0 z-1`}
     }
   }
 `;
