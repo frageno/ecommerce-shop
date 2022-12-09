@@ -9,11 +9,19 @@ const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
   const [subtotal, setSubTotal] = useState(0);
   const [alert, setAlert] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const cartClickHandler = (item) => {
     // Adding item to cart
     setItem((prevItems) => {
-      return [item, ...prevItems];
+      // Check if product is already in cart if is add quantity
+      if(!prevItems.includes(item)){
+        // setQuantity(1);
+        return [item, ...prevItems];
+      } else {
+        setQuantity(quantity+1);
+        return [...prevItems];
+      }
     });
     // Counting price of added items to cart
     setSubTotal((prevPrice) => {
@@ -36,12 +44,14 @@ const Shop = ({ products }) => {
     const singleProduct = item.find((item) => item._id === id);
     setItem(item.filter((item) => item._id !== id));
     setSubTotal(subtotal - singleProduct.price);
+    setQuantity(0);
   };
   return (
     <Container>
       <Navbar
         products={products}
         item={item}
+        quantity={quantity}
         subtotal={subtotal}
         removeItemHandler={removeItemHandler}
       />

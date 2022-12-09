@@ -7,6 +7,7 @@ const Cart = ({
   active,
   cartClickHandler,
   item,
+  quantity,
   subtotal,
   removeItemHandler,
 }) => {
@@ -43,6 +44,7 @@ const Cart = ({
               </div>
               <div className="cart__content w-2/3">
                 <h4 className="text-sm mb-1">{product.name}</h4>
+                <span className="mr-1 text-xs bg-primary py-[2px] px-2 text-white rounded-[5px]">{quantity}</span>
                 <span className="text-xs bg-primary py-[2px] px-2 text-white rounded-[5px]">
                   ${product.price}
                 </span>
