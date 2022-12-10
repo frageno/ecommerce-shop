@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
-import { IoMdCart } from "react-icons/io";
+import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
 
 const Product = ({ products, cartClickHandler }) => {
-
   const clickHandler = (id) => {
     cartClickHandler(products.find((item) => item._id === id));
   };
@@ -39,10 +38,13 @@ const Product = ({ products, cartClickHandler }) => {
               </Button>
             </div>
           </div>
-          <div className="quick absolute top-10 right-2 text-gray opacity-0 z-index-[-1] translate-x-[100%] transition-all duration-150">
-            <IoMdCart size={20} className="mb-3"/>
-            <IoMdCart size={20} className="mb-3"/>
-            <IoMdCart size={20} />
+          <div className="quick z-[99999] flex flex-col absolute top-3 right-0 text-gray p-2">
+            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300 hover:scale-110">
+              <IoIosExpand size={18} className="mb-3" />
+            </button>
+            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300 hover:scale-110">
+              <IoIosHeart size={18} className="mb-3" />
+            </button>
           </div>
         </ProductCard>
       ))}
@@ -53,11 +55,11 @@ const Product = ({ products, cartClickHandler }) => {
 export default Product;
 
 const Wrapper = styled.div`
-  ${tw`flex items-center justify-center my-10 flex-wrap gap-2`}
+  ${tw`flex flex-row items-center justify-center my-10 flex-wrap gap-2`}
 `;
 
 const ProductCard = styled.div`
-  ${tw`shadow-lg w-[19%] p-5 relative rounded transition-all hover:shadow-xl my-3`}
+  ${tw`shadow-lg w-1/2 lg:w-[19%] p-5 relative rounded transition-all hover:shadow-xl my-3`}
   transition: color .2s;
   :hover {
     button {
@@ -66,8 +68,9 @@ const ProductCard = styled.div`
     button:before {
       ${tw`bg-primary scale-100`}
     }
-    .quick {
-      ${tw`opacity-100 translate-x-0 z-1`}
+    .btn {
+      ${tw`opacity-100 translate-x-0 z-[99999] text-gray `}
+      will-change: transform;
     }
   }
 `;
