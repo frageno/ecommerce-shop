@@ -93,7 +93,7 @@ const Cart = ({
 export default Cart;
 
 const CartBox = styled.div`
-  ${tw`fixed top-0 right-0 w-[300px] h-full overflow-auto bg-white shadow-md z-50 transition-all duration-300`}
+  ${tw`fixed top-0 right-0 w-[300px] z-[9999] h-full overflow-auto bg-white shadow-md z-50 transition-all duration-300`}
 `;
 
 const CartItemWrap = styled.div`

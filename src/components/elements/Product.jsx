@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
+import Modal from "./Modal";
 
 const Product = ({ products, cartClickHandler }) => {
   const clickHandler = (id) => {
@@ -38,14 +39,15 @@ const Product = ({ products, cartClickHandler }) => {
               </Button>
             </div>
           </div>
-          <div className="quick z-[99999] flex flex-col absolute top-3 right-0 text-gray p-2">
-            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300 hover:scale-110">
+          <div className="quick flex flex-col absolute top-3 right-0 text-gray p-2">
+            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
               <IoIosExpand size={18} className="mb-3" />
             </button>
-            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300 hover:scale-110">
+            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
               <IoIosHeart size={18} className="mb-3" />
             </button>
           </div>
+          <Modal />
         </ProductCard>
       ))}
     </Wrapper>
@@ -69,7 +71,7 @@ const ProductCard = styled.div`
       ${tw`bg-primary scale-100`}
     }
     .btn {
-      ${tw`opacity-100 translate-x-0 z-[99999] text-gray `}
+      ${tw`opacity-100 translate-x-0 z-[9] text-gray `}
       will-change: transform;
     }
   }
