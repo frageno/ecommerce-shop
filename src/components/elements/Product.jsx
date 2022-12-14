@@ -2,11 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
-import Modal from "./Modal";
 
-const Product = ({ products, cartClickHandler }) => {
+const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
   const clickHandler = (id) => {
     cartClickHandler(products.find((item) => item._id === id));
+  };
+  const viewClickHandler = (id) => {
+    // cartClickHandler(products.find((item) => item._id === id));
+    quickViewClickHandler(products.find((item) => item._id === id));
   };
 
   return (
@@ -40,14 +43,13 @@ const Product = ({ products, cartClickHandler }) => {
             </div>
           </div>
           <div className="quick flex flex-col absolute top-3 right-0 text-gray p-2">
-            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
+            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300" onClick={() => { modalClickHandler(); viewClickHandler(product._id); }}>
               <IoIosExpand size={18} className="mb-3" />
             </button>
             <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
               <IoIosHeart size={18} className="mb-3" />
             </button>
           </div>
-          <Modal />
         </ProductCard>
       ))}
     </Wrapper>

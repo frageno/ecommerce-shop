@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import Product from "../elements/Product";
 import Navbar from "./Navbar";
 import Alert from "../elements/Alert";
+import Modal from "../elements/Modal";
+
 
 const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
   const [subtotal, setSubTotal] = useState(0);
   const [alert, setAlert] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [modalActive, setModalActive] = useState(false);
 
   const cartClickHandler = (item) => {
     // Adding item to cart
@@ -30,6 +33,28 @@ const Shop = ({ products }) => {
     // Showing alert
     setAlert(true);
   };
+
+  const quickViewClickHandler = (item) => {
+    setItem((prevItems) => {
+      return [item, ...prevItems];
+    })
+  }
+
+  useEffect(() => {
+    const closeModal = e => {
+      console.log(e);
+      setModalActive(false);
+    }
+  
+    return () => {
+      document.body.removeEventListener('click' , closeModal)
+    }
+  }, [modalActive])
+  
+  const modalClickHandler = () => {
+    console.log('test');
+    setModalActive(prev => !prev);
+  }
   // Close alert after add item
   const closeAlertClickHandler = () => {
     setAlert(false);
@@ -46,6 +71,8 @@ const Shop = ({ products }) => {
     setSubTotal(subtotal - singleProduct.price);
     setQuantity(0);
   };
+
+  console.log(modalActive)
   return (
     <Container>
       <Navbar
@@ -56,8 +83,9 @@ const Shop = ({ products }) => {
         removeItemHandler={removeItemHandler}
       />
       <h2 className="text-4xl text-center font-bold pt-10">Shop</h2>
-      <Product products={products} cartClickHandler={cartClickHandler} />
+      <Product products={products} cartClickHandler={cartClickHandler} modalClickHandler={modalClickHandler} quickViewClickHandler={quickViewClickHandler}/>
       <Alert alert={alert} closeAlertClickHandler={closeAlertClickHandler} item={item}/>
+      {modalActive && <Modal modalActive={modalActive} modalClickHandler={() => setModalActive(prev => !prev)} item={item}/> }
     </Container>
   );
 };
