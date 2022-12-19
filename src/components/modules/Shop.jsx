@@ -9,12 +9,55 @@ import Modal from "../elements/Modal";
 
 const Shop = ({ products }) => {
   const [item, setItem] = useState([]);
+  const [product, setProduct] = useState([]);
   const [subtotal, setSubTotal] = useState(0);
   const [alert, setAlert] = useState(false);
-  const [quantity, setQuantity] = useState(1);
   const [modalActive, setModalActive] = useState(false);
+  // console.log(products);
+  // console.log(quantity)
+  const tempQuantity = products.map(item => item.quantity);
+  const [quantity, setQuantity] = useState(tempQuantity);
 
-  const cartClickHandler = (item) => {
+  // const filteredQuantity = [...new Set(tempQuantity)];
+  // console.log(quantity);
+  const cartClickHandler = (item, index2) => {
+    let count = 1;
+    count = count + 1;
+    const productQuantity= products.find((product) => product.index === index2);
+    setQuantity(prev => {
+      return [productQuantity.quantity = quantity + 1,
+      ...prev]
+    
+    });
+    console.log(quantity)
+    // console.log(quantity.find((quantit) => quantit[index2]));
+    // count++;
+    // if(quantity[index] === index){
+    //   console.log('test')
+    //   setQuantity(
+    //     quantity[index] = count + 1
+    //   )
+    // }
+    // console.log(quantity);
+    // console.log(quantity[index] = count)
+    // console.log(quantity, 'trtrwres')
+    // if(index === quantity[index]) {
+    //   console.log(quantity[index]);
+    // }
+    // setQuantity((prev) => {
+    //   return [item._id, ...prev];
+    // });
+    // let productQuantity = quantity.products[0].find((item) => item._id === id);
+    // console.log(productQuantity);
+    // let productQuantity = products.find((item) => item._id === id);
+    // if(productQuantity === item) {
+    //   setQuantity((prev) => {
+    //     return (prev += productQuantity.quantity);
+    //   });
+    // }else {
+    //   setQuantity(1);
+    // }
+    // console.log(quantity);
     // Adding item to cart
     setItem((prevItems) => {
       // Check if product is already in cart if is add quantity
@@ -22,10 +65,14 @@ const Shop = ({ products }) => {
         // setQuantity(1);
         return [item, ...prevItems];
       } else {
-        setQuantity(quantity+1);
+        // setQuantity((prevQuantity) => {
+        //   // item.quantity++;
+        //   return [productQuantity, ...prevQuantity];
+        // });
         return [...prevItems];
       }
     });
+    console.log(quantity[2]);
     // Counting price of added items to cart
     setSubTotal((prevPrice) => {
       return (prevPrice += item.price);
@@ -34,15 +81,14 @@ const Shop = ({ products }) => {
     setAlert(true);
   };
 
-  const quickViewClickHandler = (item) => {
-    setItem((prevItems) => {
-      return [item, ...prevItems];
+  const quickViewClickHandler = (product) => {
+    setProduct((prevProduct) => {
+      return [product, ...prevProduct];
     })
   }
 
   useEffect(() => {
     const closeModal = e => {
-      console.log(e);
       setModalActive(false);
     }
   
@@ -85,7 +131,7 @@ const Shop = ({ products }) => {
       <h2 className="text-4xl text-center font-bold pt-10">Shop</h2>
       <Product products={products} cartClickHandler={cartClickHandler} modalClickHandler={modalClickHandler} quickViewClickHandler={quickViewClickHandler}/>
       <Alert alert={alert} closeAlertClickHandler={closeAlertClickHandler} item={item}/>
-      {modalActive && <Modal modalActive={modalActive} modalClickHandler={() => setModalActive(prev => !prev)} item={item}/> }
+      {modalActive && <Modal modalActive={modalActive} products={products} product={product} cartClickHandler={cartClickHandler} modalClickHandler={() => setModalActive(prev => !prev)} /> }
     </Container>
   );
 };

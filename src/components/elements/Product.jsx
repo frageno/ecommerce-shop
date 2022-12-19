@@ -4,8 +4,8 @@ import tw from "twin.macro";
 import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
 
 const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
-  const clickHandler = (id) => {
-    cartClickHandler(products.find((item) => item._id === id));
+  const clickHandler = (id, index) => {
+    cartClickHandler(products.find((item) => item._id === id), index);
   };
   const viewClickHandler = (id) => {
     // cartClickHandler(products.find((item) => item._id === id));
@@ -35,7 +35,7 @@ const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickH
               <span className="font-bold text-lg">${product.price}</span>
               <Button
                 onClick={() => {
-                  clickHandler(product._id);
+                  clickHandler(product._id, product.index);
                 }}
               >
                 <IoMdCart size={20} />

@@ -8,8 +8,12 @@ import { IoIosClose } from "react-icons/io";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Modal = ({ modalActive, modalClickHandler, item }) => {
-  console.log(item);
+const Modal = ({ modalActive, modalClickHandler, cartClickHandler, products, product }) => {
+  const clickCartHandler = (id) => {
+    cartClickHandler(products.find((item) => item._id === id));
+  }
+  const materials = product[0].material.split(' ');
+  const colors = product[0].color.split(',');
   const ref = useRef();
   // useEffect(() => {
   //   const clickOutsiteHandler = (e) => {
@@ -45,25 +49,26 @@ const Modal = ({ modalActive, modalClickHandler, item }) => {
           >
             <SwiperSlide>
               <div className="w-full">
-                <img src={item[0].imageURL} alt={item[0].name} />
+                <img src={product[0].imageURL} alt={product[0].name} />
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="w-full">
-                <img src={item[0].imageURL} alt={item[0].name} />
+                <img src={product[0].imageURL} alt={product[0].name} />
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className="w-full">
-                <img src={item[0].imageURL} alt={item[0].name} />
+                <img src={product[0].imageURL} alt={product[0].name} />
               </div>
             </SwiperSlide>
           </Swiper>
         </div>
         <div className="w-full md:w-2/3 text-left px-6 py-12">
-          <h3 className="text-2xl font-bold pb-4">{item[0].name}</h3>
-          <p className="mb-4">{item[0].description}</p>
-          <span className="font-bold text-2xl">${item[0].price}</span>
+          <h3 className="text-2xl font-bold pb-4">{product[0].name}</h3>
+          <span className="text-green-600">In Stock</span>
+          <p className="my-4">{product[0].description}</p>
+          <span className="font-bold text-2xl">${product[0].price}</span>
           <div className="product-form my-3">
             {/* Material */}
             <div className="product-form__row pb-4">
@@ -71,14 +76,12 @@ const Modal = ({ modalActive, modalClickHandler, item }) => {
                 <span className="text-sm uppercase">Material</span>
               </div>
               <div className="product-form__inputs flex">
-                <div className="product-form__input flex items-center pr-2">
-                  <input type="radio" name="option.material" value="Aluminium" />
-                  <span className="ml-2">Aluminium</span>
-                </div>
-                <div className="product-form__input flex items-center pr-2">
-                  <input type="radio" name="option.material" value="Steel" />
-                  <span className="ml-2">Steel</span>
-                </div>
+                {materials.map((material,index) => (
+                    <div className="product-form__input flex items-center pr-2" key={index}>
+                      <input type="radio" name="option.material" value="Aluminium" />
+                      <span className="ml-2">{material}</span>
+                    </div>
+                ))}
               </div>
             </div>
             {/* Color */}
@@ -87,19 +90,17 @@ const Modal = ({ modalActive, modalClickHandler, item }) => {
                 <span className="text-sm uppercase">Color</span>
               </div>
               <div className="product-form__inputs flex">
-                <div className="product-form__input flex items-center pr-2">
-                  <input type="radio" name="option.material" value="Aluminium" />
-                  <span className="ml-2">Aluminium</span>
-                </div>
-                <div className="product-form__input flex items-center pr-2">
-                  <input type="radio" name="option.material" value="Steel" />
-                  <span className="ml-2">Steel</span>
-                </div>
+                {colors.map((color, index) => (
+                  <div className="product-form__input flex items-center pr-2" key={index}>
+                    <input type="radio" name="option.color" value="Aluminium" />
+                    <span className="ml-2">{color}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <div className="quickview__actions">
-            <button className="bg-primary p-2 text-white">Add To cart</button>
+            <button className="bg-primary p-2 text-white" onClick={() => {clickCartHandler(product[0]._id)}}>Add To cart</button>
           </div>
         </div>
         <button className="absolute top-5 right-5">
