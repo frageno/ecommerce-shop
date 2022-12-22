@@ -5,7 +5,7 @@ import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
 
 const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
   const clickHandler = (id, index) => {
-    cartClickHandler(products.find((item) => item._id === id), index);
+    cartClickHandler(products.find((item) => item._id === id), index, id);
   };
   const viewClickHandler = (id) => {
     // cartClickHandler(products.find((item) => item._id === id));
@@ -38,7 +38,7 @@ const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickH
                   clickHandler(product._id, product.index);
                 }}
               >
-                <IoMdCart size={20} />
+                <IoMdCart size={20} className="z-[999999999]"/>
               </Button>
             </div>
           </div>
@@ -59,18 +59,18 @@ const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickH
 export default Product;
 
 const Wrapper = styled.div`
-  ${tw`flex flex-row items-center justify-center my-10 flex-wrap gap-2`}
+  ${tw`flex flex-row items-center justify-center my-2 flex-wrap gap-2`}
 `;
 
 const ProductCard = styled.div`
-  ${tw`shadow-lg w-1/2 lg:w-[19%] p-5 relative rounded transition-all hover:shadow-xl my-3`}
+  ${tw`shadow-lg w-1/2 lg:w-[19%] bg-white p-5 relative rounded transition-all hover:shadow-xl my-3`}
   transition: color .2s;
   :hover {
     button {
       ${tw`text-white`}
     }
     button:before {
-      ${tw`bg-primary scale-100`}
+      ${tw`bg-primary scale-100 z-[99999]`}
     }
     .btn {
       ${tw`opacity-100 translate-x-0 z-[9] text-gray `}

@@ -18,6 +18,79 @@ const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
       <a href="/" className="text-2xl font-bold uppercase">
         Car<span className="text-primary">Parts.</span>
       </a>
+      <div className="navigation">
+        <ul className="flex items-center">
+          <li className="px-2">
+            <a href="/">Home</a>
+          </li>
+          <li className="px-2 relative">
+            <a>Categories</a>
+            <div className="submenu-box opacity-0 flex items-center bg-white p-5 shadow absolute top-8 w-[500px]">
+              <ul className="submenu mr-8">
+                <span className="font-bold">Car parts</span>
+                <li className="py-1 mt-2">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+              </ul>
+              <ul className="submenu mr-8">
+                <span className="font-bold">Car parts</span>
+                <li className="py-1 mt-2">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+              </ul>
+              <ul className="submenu mr-8">
+                <span className="font-bold">Car parts</span>
+                <li className="py-1 mt-2">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+              </ul>
+              <ul className="submenu mr-8">
+                <span className="font-bold">Car parts</span>
+                <li className="py-1 mt-2">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+                <li className="py-1">
+                  <a href="">Wheel</a>
+                </li>
+              </ul>
+
+            </div>
+          </li>
+        </ul>
+      </div>
       <div className="cart-box relative">
         <button
           onClick={() => {
