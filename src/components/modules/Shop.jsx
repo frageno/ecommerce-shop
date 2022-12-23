@@ -176,7 +176,7 @@ const Shop = ({ products }) => {
         subtotal={subtotal}
         removeItemHandler={removeItemHandler}
       />
-      <h2 className="text-4xl text-center font-bold py-10">Shop</h2>
+      <h2 className="text-4xl text-center font-bold py-32">Shop</h2>
       <Sorting onShowLimitChange={onShowLimitChange} displayTypeHanlde={displayTypeHanlde} onSortChange={onSortChange}/>
       <Product
         products={products}

@@ -69,11 +69,11 @@ const Product = ({ products, numberOfProducts, sort, opacity, cartClickHandler,m
 export default Product;
 
 const Wrapper = styled.div`
-  ${tw`flex flex-row items-center justify-start my-2 flex-wrap gap-[0.95rem] transition-opacity duration-300`}
+  ${tw`flex flex-row justify-start my-2 flex-wrap gap-x-[0.95rem] transition-opacity duration-300`}
 `;
 
 const ProductCard = styled.div`
-  ${tw`shadow-lg w-1/2 lg:w-[19%] bg-white p-5 relative rounded transition-all hover:shadow-xl my-3`}
+  ${tw`shadow w-1/2 lg:w-[19%] bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
   transition: color .2s;
   :hover {
     button {

@@ -109,7 +109,7 @@ const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
             cartClickHandler(true);
           }}
         >
-          <IoMdCart size={32} />
+          <IoMdCart size={24} />
           <Counter>{item.length}</Counter>
         </button>
         <Cart active={isActive} cartClickHandler={cartClickHandler} item={item} quantity={quantity} subtotal={subtotal} removeItemHandler={removeItemHandler} />

@@ -118,7 +118,7 @@ const Modal = ({ modalActive, modalClickHandler, cartClickHandler, products, pro
 export default Modal;
 
 const Wrapper = styled.div`
-  ${tw`fixed top-0 left-0 w-full h-full bg-[#0000009e] flex justify-center items-center text-center px-5 transition-opacity duration-500`}
+  ${tw`fixed top-0 left-0 w-full h-full bg-[#0000009e] flex justify-center items-center text-center px-5 transition-opacity duration-500 z-[9999999999]`}
 `;
 
 const ModalBox = styled.div`
