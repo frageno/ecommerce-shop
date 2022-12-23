@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
 
-const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
+const Product = ({ products, numberOfProducts, sort, opacity, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
   const clickHandler = (id, index) => {
     cartClickHandler(products.find((item) => item._id === id), index, id);
   };
@@ -11,10 +11,20 @@ const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickH
     // cartClickHandler(products.find((item) => item._id === id));
     quickViewClickHandler(products.find((item) => item._id === id));
   };
-
+  const sorting = (a,b) => {
+    if(sort === 'name_asc'){
+      console.log('d')
+      return a.name > b.name ? 1 : -1
+    }else {
+      return a.name < b.name ? 1 : -1
+    }
+  }
   return (
-    <Wrapper>
-      {products.map((product) => (
+    <Wrapper className={`${opacity ? 'opacity-40 pointer-events-none' : 'opacity-100'}`}>
+      {products
+      .slice(0,numberOfProducts)
+      .sort((a,b) => sorting(a,b))
+      .map((product) => (
         <ProductCard key={product._id}>
           <div className="image">
             <a href="/">
@@ -59,7 +69,7 @@ const Product = ({ products, cartClickHandler,modalClickHandler, quickViewClickH
 export default Product;
 
 const Wrapper = styled.div`
-  ${tw`flex flex-row items-center justify-center my-2 flex-wrap gap-2`}
+  ${tw`flex flex-row items-center justify-start my-2 flex-wrap gap-[0.95rem] transition-opacity duration-300`}
 `;
 
 const ProductCard = styled.div`

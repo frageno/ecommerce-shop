@@ -20,10 +20,13 @@ const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
       </a>
       <div className="navigation">
         <ul className="flex items-center">
-          <li className="px-2">
+          <li className="px-3 font-medium">
             <a href="/">Home</a>
           </li>
-          <li className="px-2 relative">
+          <li className="px-3 font-medium">
+            <a href="/">Shop</a>
+          </li>
+          <li className="px-3 font-medium relative">
             <a>Categories</a>
             <div className="submenu-box opacity-0 flex items-center bg-white p-5 shadow absolute top-8 w-[500px]">
               <ul className="submenu mr-8">
@@ -88,6 +91,15 @@ const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
               </ul>
 
             </div>
+          </li>
+          <li className="px-3 font-medium">
+            <a href="/">Blog</a>
+          </li>
+          <li className="px-3 font-medium">
+            <a href="/">Account</a>
+          </li>
+          <li className="px-3 font-medium">
+            <a href="/">Pages</a>
           </li>
         </ul>
       </div>

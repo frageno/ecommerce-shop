@@ -118,5 +118,29 @@
       "category": "Brake Kit",
       "price": 20,
       "description": "Excepteur amet consectetur dolor dolore nostrud dolor tempor voluptate ut id. Ex occaecat cupidatat consequat mollit ut. Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
+    },
+    {
+      "_id": "622185c954g552hujk8pw36",
+      "index": 11,
+      "name": "Brandix Brake Kit BDX-750Z370-S",
+      "imageURL": "images/product-2.jpg",
+      "date": "2021-09-02 02:30",
+      "material": "Steel Thorium",
+      "color": "Yellow, Red",
+      "category": "Brake Kit",
+      "price": 25,
+      "description": "Excepteur amet consectetur dolor dolore nostrud dolor tempor voluptate ut id. Ex occaecat cupidatat consequat mollit ut. Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
+    },
+    {
+      "_id": "69155s954t512htsk83w36",
+      "index": 12,
+      "name": "Brandix Brake Kit BDX-750Z370-S",
+      "imageURL": "images/product-1.jpg",
+      "date": "2021-09-02 02:30",
+      "material": "Steel Thorium",
+      "color": "Yellow, Red",
+      "category": "Brake Kit",
+      "price": 55,
+      "description": "Excepteur amet consectetur dolor dolore nostrud dolor tempor voluptate ut id. Ex occaecat cupidatat consequat mollit ut. Ut qui culpa cillum reprehenderit nulla ut cupidatat sunt sit excepteur consequat. Esse consequat officia officia incididunt reprehenderit. Fugiat do labore commodo cillum anim ipsum minim esse deserunt consequat sit minim cillum veniam. Lorem nulla eu anim elit incididunt veniam in nisi.\r\n"
     }
 ]
