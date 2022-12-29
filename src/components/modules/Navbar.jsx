@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
-import { IoMdCart } from "react-icons/io";
+import { IoMdCart, IoIosSearch } from "react-icons/io";
 import Cart from "../elements/Cart";
 
-const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
+const Navbar = ({products, item, quantity, subtotal, removeItemHandler}) => {
   // State for active cart items
   const [isActive, setIsActive] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Handlers
   const cartClickHandler = (active) => {
     setIsActive(active);
   };
+
+  const onSearchBarChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
+  const onSearchClick = (searchTerm) => {
+    setSearchTerm(searchTerm);
+  }
 
   return (
     <NavbarBox>
@@ -103,7 +112,27 @@ const Navbar = ({item, quantity, subtotal, removeItemHandler}) => {
           </li>
         </ul>
       </div>
-      <div className="cart-box relative">
+      <div className="cart-box relative flex items-center">
+      {/* SEARCH BAR */}
+        <div className="search-bar relative mr-5">
+          <input type="text" className="p-2" placeholder="Enter keywords" onChange={onSearchBarChange} value={searchTerm} />
+          <button>
+            <IoIosSearch className="absolute top-3 right-2" />
+          </button>
+          <ul className="search-results bg-white shadow mt-3 absolute w-full rounded-[5px] z-[1050]">
+            {products
+            .filter((product) => {
+              const term = searchTerm.toLowerCase()
+              const fullName = product.name.toLowerCase();
+
+              return term && fullName.startsWith(searchTerm) && fullName !== searchTerm
+            })
+            .slice(0,5)
+            .map((product) => (
+              <li className="p-3 cursor-pointer hover:bg-[#f2f2f2]" onClick={() => onSearchClick(product.name)} key={product._id}>{product.name}</li>
+            ))}
+          </ul>
+        </div>
         <button
           onClick={() => {
             cartClickHandler(true);
@@ -127,3 +156,4 @@ const NavbarBox = styled.div`
 const Counter = styled.span`
   ${tw`absolute bottom-[-5px] right-[-10px] bg-primary rounded-full text-white py-1 px-2 text-xs w-[24px] h-[24px]`}
 `;
+
