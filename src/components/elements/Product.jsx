@@ -13,6 +13,7 @@ const Product = ({
   quickViewClickHandler,
   displayType,
 }) => {
+  console.log(displayType)
   // const [type, setType] = useState('');
 
   // useEffect(() => {
@@ -103,6 +104,7 @@ const Wrapper = styled.div`
 `;
 
 const ProductCard = styled.div`
+  ${(props) => (props.displayType === 1 ? '' : 'width')}
   ${tw`shadow bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
   transition: color .2s;
   :hover {

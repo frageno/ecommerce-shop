@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { IoGrid } from "react-icons/io5";
-import { MdViewWeek, MdViewStream } from "react-icons/md";
+import { MdViewModule, MdViewWeek, MdViewStream } from "react-icons/md";
 
 const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
   const [number, setNumber] = useState(10);
-  const [buttonActive, setButtonActive] = useState(null);
+  const [buttonActive, setButtonActive] = useState(0);
 
- 
+  const iconArray = [<MdViewModule />, <MdViewWeek />, <MdViewStream />];
 
   // Handler for adding active state on click in icon
   const handleButtonClick = (buttonID) => {
@@ -16,23 +15,35 @@ const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
   return (
     <div className="filter p-5 flex items-center justify-between bg-white shadow rounded-md text-[15px]">
       <div className="view-option__icons-list flex items-center">
-        <button
-          className="grid p-1 hover:bg-[#f2f2f2]"
+        {iconArray.map((item, index) => (
+          <button
+            key={index}
+            className={`grid p-1 hover:bg-[#f2f2f2] text-2xl ${
+              buttonActive === index ? "text-primary" : "text-[#95a0a6]"
+            }`}
+            onClick={() => {
+              displayTypeHanlde(index); // Change styles in products card depends on what icon is selected
+              handleButtonClick(index); // Adding id to button
+            }}
+          >
+            {item}
+          </button>
+        ))}
+        {/* <button
+          className={`grid p-1 hover:bg-[#f2f2f2] text-lg ${
+            buttonActive === 1 ? "text-primary" : "text-[#95a0a6]"
+          }`}
           onClick={() => {
             displayTypeHanlde("w-full lg:w-[19%]"); // Change styles in products card depends on what icon is selected
             handleButtonClick(1); // Adding id to button
           }}
         >
-          <IoGrid
-            className={`text-lg  ${
-              buttonActive === 1 ? "text-primary" : "text-[#95a0a6]"
-            }`}
-          />
-        </button>
-        <button
+          <IoGrid />
+        </button> */}
+        {/* <button
           className="column p-1 hover:bg-[#f2f2f2]"
           onClick={() => {
-            displayTypeHanlde("flex items-center w-full");
+            displayTypeHanlde("flex items-center w-[49%]");
             handleButtonClick(2);
           }}
         >
@@ -54,7 +65,7 @@ const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
               buttonActive === 3 ? "text-primary" : "text-[#95a0a6]"
             }`}
           />
-        </button>
+        </button> */}
         <span className="ml-2">
           Showing <span className="font-bold">{number}</span> products
         </span>
