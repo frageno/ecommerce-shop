@@ -9,6 +9,9 @@ const Navbar = ({products, item, quantity, subtotal, removeItemHandler}) => {
   const [isActive, setIsActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
+  // const truncatedText = searchTerm.length > 20 ? setSearchTerm(searchTerm.substring(0,20)) + '...' : searchTerm;
+
+
   // Handlers
   const cartClickHandler = (active) => {
     setIsActive(active);
@@ -115,10 +118,12 @@ const Navbar = ({products, item, quantity, subtotal, removeItemHandler}) => {
       <div className="cart-box relative flex items-center">
       {/* SEARCH BAR */}
         <div className="search-bar relative mr-5">
-          <input type="text" className="p-2" placeholder="Enter keywords" onChange={onSearchBarChange} value={searchTerm} />
-          <button>
-            <IoIosSearch className="absolute top-3 right-2" />
-          </button>
+          <div className="search-bar__container bg-white flex items-center shadow">
+            <input type="text" className="px-2 focus:outline-none" placeholder="Enter keywords" onChange={onSearchBarChange} value={searchTerm} />
+            <button className="w-[30px] h-[40px] relative px-1">
+              <IoIosSearch className="!mr-0" />
+            </button>
+          </div>
           <ul className="search-results bg-white shadow mt-3 absolute w-full rounded-[5px] z-[1050]">
             {products
             .filter((product) => {

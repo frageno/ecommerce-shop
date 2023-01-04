@@ -4,41 +4,56 @@ import { MdViewWeek, MdViewStream } from "react-icons/md";
 
 const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
   const [number, setNumber] = useState(10);
-  const [isActive, setIsActive] = useState(false);
+  const [buttonActive, setButtonActive] = useState(null);
+
+ 
+
+  // Handler for adding active state on click in icon
+  const handleButtonClick = (buttonID) => {
+    setButtonActive(buttonID);
+  };
+
   return (
     <div className="filter p-5 flex items-center justify-between bg-white shadow rounded-md text-[15px]">
       <div className="view-option__icons-list flex items-center">
         <button
           className="grid p-1 hover:bg-[#f2f2f2]"
           onClick={() => {
-            displayTypeHanlde("grid");
-            setIsActive((prev) => !prev);
+            displayTypeHanlde("w-full lg:w-[19%]"); // Change styles in products card depends on what icon is selected
+            handleButtonClick(1); // Adding id to button
           }}
         >
           <IoGrid
             className={`text-lg  ${
-              isActive ? "text-primary" : "text-[#95a0a6]"
+              buttonActive === 1 ? "text-primary" : "text-[#95a0a6]"
             }`}
           />
         </button>
         <button
           className="column p-1 hover:bg-[#f2f2f2]"
           onClick={() => {
-            displayTypeHanlde("column");
-            setIsActive((prev) => !prev);
+            displayTypeHanlde("flex items-center w-full");
+            handleButtonClick(2);
           }}
         >
           <MdViewWeek
-            className={` text-2xl ${
-              isActive ? "text-primary" : "text-[#95a0a6]"
+            className={`text-2xl ${
+              buttonActive === 2 ? "text-primary" : "text-[#95a0a6]"
             }`}
           />
         </button>
         <button
           className="list p-1 hover:bg-[#f2f2f2]"
-          onClick={() => displayTypeHanlde("list")}
+          onClick={() => {
+            displayTypeHanlde("flex items-center w-full");
+            handleButtonClick(3);
+          }}
         >
-          <MdViewStream className="text-[#95a0a6] text-2xl" />
+          <MdViewStream
+            className={`text-2xl ${
+              buttonActive === 3 ? "text-primary" : "text-[#95a0a6]"
+            }`}
+          />
         </button>
         <span className="ml-2">
           Showing <span className="font-bold">{number}</span> products

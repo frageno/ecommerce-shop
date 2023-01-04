@@ -15,7 +15,7 @@ const Shop = ({ products }) => {
   const [modalActive, setModalActive] = useState(false);
   const [number, setNumber] = useState(10);
   const [sort, setSort] = useState('');
-  const [displayType, setDisplayType] = useState('grid');
+  const [displayType, setDisplayType] = useState('w-[19%]');
   const [opacity, setOpacity] = useState(false);
   const displayTypeHanlde = (type) => {
     setDisplayType(`${type}`);
@@ -186,6 +186,7 @@ const Shop = ({ products }) => {
         modalClickHandler={modalClickHandler}
         quickViewClickHandler={quickViewClickHandler}
         opacity={opacity}
+        displayType={displayType}
       />
       <Alert
         alert={alert}

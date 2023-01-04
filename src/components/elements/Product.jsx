@@ -1,67 +1,97 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import tw from "twin.macro";
 import { IoMdCart, IoIosExpand, IoIosHeart } from "react-icons/io";
 
-const Product = ({ products, numberOfProducts, sort, opacity, cartClickHandler,modalClickHandler, quickViewClickHandler }) => {
+const Product = ({
+  products,
+  numberOfProducts,
+  sort,
+  opacity,
+  cartClickHandler,
+  modalClickHandler,
+  quickViewClickHandler,
+  displayType,
+}) => {
+  // const [type, setType] = useState('');
+
+  // useEffect(() => {
+  //   setType(displayType);
+
+  // }, [displayType])
+  
   const clickHandler = (id, index) => {
-    cartClickHandler(products.find((item) => item._id === id), index, id);
+    cartClickHandler(
+      products.find((item) => item._id === id),
+      index,
+      id
+    );
   };
   const viewClickHandler = (id) => {
     // cartClickHandler(products.find((item) => item._id === id));
     quickViewClickHandler(products.find((item) => item._id === id));
   };
-  const sorting = (a,b) => {
-    if(sort === 'name_asc'){
-      console.log('d')
-      return a.name > b.name ? 1 : -1
-    }else {
-      return a.name < b.name ? 1 : -1
+  const sorting = (a, b) => {
+    if (sort === "name_asc") {
+      return a.name > b.name ? 1 : -1;
+    } else {
+      return a.name < b.name ? 1 : -1;
     }
-  }
+  };
+
   return (
-    <Wrapper className={`${opacity ? 'opacity-40 pointer-events-none' : 'opacity-100'}`}>
+    <Wrapper
+      className={`${
+        opacity ? "opacity-40 pointer-events-none" : "opacity-100 " 
+      }`}
+    >
       {products
-      .slice(0,numberOfProducts)
-      .sort((a,b) => sorting(a,b))
-      .map((product) => (
-        <ProductCard key={product._id}>
-          <div className="image">
-            <a href="/">
-              <img src={product.imageURL} alt={product.name} />
-            </a>
-          </div>
-          <div className="product-content">
-            <p className="text-primary text-sm font-medium uppercase">
-              {product.category}
-            </p>
-            <a href="/">
-              <ProductName className="text-lg font-bold pt-2">
-                {product.name}
-              </ProductName>
-            </a>
-            <Description>{product.description}</Description>
-            <div className="flex justify-between pt-5">
-              <span className="font-bold text-lg">${product.price}</span>
-              <Button
+        .slice(0, numberOfProducts)
+        .sort((a, b) => sorting(a, b))
+        .map((product) => (
+          <ProductCard key={product._id} className={`${displayType}`}>
+            <div className="image">
+              <a href="/">
+                <img src={product.imageURL} alt={product.name} />
+              </a>
+            </div>
+            <div className="product-content">
+              <p className="text-primary text-sm font-medium uppercase">
+                {product.category}
+              </p>
+              <a href="/">
+                <ProductName className="text-lg font-bold pt-2">
+                  {product.name}
+                </ProductName>
+              </a>
+              <Description>{product.description}</Description>
+              <div className="flex justify-between pt-5">
+                <span className="font-bold text-lg">${product.price}</span>
+                <Button
+                  onClick={() => {
+                    clickHandler(product._id, product.index);
+                  }}
+                >
+                  <IoMdCart size={20} className="z-[999999999]" />
+                </Button>
+              </div>
+            </div>
+            <div className="quick flex flex-col absolute top-3 right-0 text-gray p-2">
+              <button
+                className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300"
                 onClick={() => {
-                  clickHandler(product._id, product.index);
+                  modalClickHandler();
+                  viewClickHandler(product._id);
                 }}
               >
-                <IoMdCart size={20} className="z-[999999999]"/>
-              </Button>
+                <IoIosExpand size={18} className="mb-3" />
+              </button>
+              <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
+                <IoIosHeart size={18} className="mb-3" />
+              </button>
             </div>
-          </div>
-          <div className="quick flex flex-col absolute top-3 right-0 text-gray p-2">
-            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300" onClick={() => { modalClickHandler(); viewClickHandler(product._id); }}>
-              <IoIosExpand size={18} className="mb-3" />
-            </button>
-            <button className="btn opacity-0 translate-x-[100%] z-[-1] transition-all duration-300">
-              <IoIosHeart size={18} className="mb-3" />
-            </button>
-          </div>
-        </ProductCard>
-      ))}
+          </ProductCard>
+        ))}
     </Wrapper>
   );
 };
@@ -73,7 +103,7 @@ const Wrapper = styled.div`
 `;
 
 const ProductCard = styled.div`
-  ${tw`shadow w-1/2 lg:w-[19%] bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
+  ${tw`shadow bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
   transition: color .2s;
   :hover {
     button {
