@@ -50,7 +50,7 @@ const Product = ({
         .slice(0, numberOfProducts)
         .sort((a, b) => sorting(a, b))
         .map((product) => (
-          <ProductCard key={product._id} className={`${displayType}`}>
+          <ProductCard key={product._id}>
             <div className="image">
               <a href="/">
                 <img src={product.imageURL} alt={product.name} />
@@ -104,8 +104,7 @@ const Wrapper = styled.div`
 `;
 
 const ProductCard = styled.div`
-  ${(props) => (props.displayType === 1 ? '' : 'width')}
-  ${tw`shadow bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
+  ${tw`shadow w-1/2 lg:w-[19%] bg-white p-5 relative rounded transition-all duration-300 hover:shadow-lg my-3`}
   transition: color .2s;
   :hover {
     button {
