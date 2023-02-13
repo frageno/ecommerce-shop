@@ -13,14 +13,7 @@ const Product = ({
   quickViewClickHandler,
   displayType,
 }) => {
-  console.log(displayType)
-  // const [type, setType] = useState('');
-
-  // useEffect(() => {
-  //   setType(displayType);
-
-  // }, [displayType])
-  
+  console.log(displayType);
   const clickHandler = (id, index) => {
     cartClickHandler(
       products.find((item) => item._id === id),
@@ -50,7 +43,7 @@ const Product = ({
         .slice(0, numberOfProducts)
         .sort((a, b) => sorting(a, b))
         .map((product) => (
-          <ProductCard key={product._id}>
+          <ProductCard key={product._id} className={displayType}>
             <div className="image">
               <a href="/">
                 <img src={product.imageURL} alt={product.name} />
@@ -117,6 +110,15 @@ const ProductCard = styled.div`
       ${tw`opacity-100 translate-x-0 z-[9] text-gray `}
       will-change: transform;
     }
+  }
+  &.grid {
+    ${tw`w-1/2 lg:w-[19%]`}
+  }
+  &.table {
+    ${tw`w-[32%]`}
+  }
+  &.list {
+    ${tw`w-full`}
   }
 `;
 

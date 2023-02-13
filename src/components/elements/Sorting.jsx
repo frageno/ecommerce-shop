@@ -5,7 +5,27 @@ const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
   const [number, setNumber] = useState(10);
   const [buttonActive, setButtonActive] = useState(0);
 
-  const iconArray = [<MdViewModule />, <MdViewWeek />, <MdViewStream />];
+  // const iconArray = [<MdViewModule />, <MdViewWeek />, <MdViewStream />];
+  const iconArray = [
+    {
+      "_id": "613085c66064674c5c47c7ab",
+      "index": 0,
+      "icon": <MdViewModule />,
+      "name": "grid",
+    },
+    {
+      "_id": "613213c66064674c5c47c7ab",
+      "index": 1,
+      "icon": <MdViewWeek />,
+      "name": "table",
+    },
+    {
+      "_id": "613213c66064674c5c47g41b",
+      "index": 2,
+      "icon":  <MdViewStream />,
+      "name": "list",
+    },
+  ];
 
   // Handler for adding active state on click in icon
   const handleButtonClick = (buttonID) => {
@@ -15,18 +35,19 @@ const Sorting = ({ onShowLimitChange, displayTypeHanlde, onSortChange }) => {
   return (
     <div className="filter p-5 flex items-center justify-between bg-white shadow rounded-md text-[15px]">
       <div className="view-option__icons-list flex items-center">
-        {iconArray.map((item, index) => (
+        {iconArray.map((item) => (
           <button
-            key={index}
+            key={item._id}
             className={`grid p-1 hover:bg-[#f2f2f2] text-2xl ${
-              buttonActive === index ? "text-primary" : "text-[#95a0a6]"
+              buttonActive === item.index ? "text-primary" : "text-[#95a0a6]"
             }`}
+            data-value={item.name}
             onClick={() => {
-              displayTypeHanlde(index); // Change styles in products card depends on what icon is selected
-              handleButtonClick(index); // Adding id to button
+              displayTypeHanlde(item.name); // Change styles in products card depends on what icon is selected
+              handleButtonClick(item.index); // Adding id to button
             }}
           >
-            {item}
+            {item.icon}
           </button>
         ))}
         {/* <button

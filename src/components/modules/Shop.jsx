@@ -15,7 +15,7 @@ const Shop = ({ products }) => {
   const [modalActive, setModalActive] = useState(false);
   const [number, setNumber] = useState(10);
   const [sort, setSort] = useState('');
-  const [displayType, setDisplayType] = useState('w-[19%]');
+  const [displayType, setDisplayType] = useState('grid');
   const [opacity, setOpacity] = useState(false);
   const displayTypeHanlde = (type) => {
     setDisplayType(`${type}`);
